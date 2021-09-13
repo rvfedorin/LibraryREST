@@ -1,0 +1,18 @@
+docker run --name=mysqlServer --restart on-failure -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server
+docker exec -it mysqlServer mysql -uroot -p
+create user 'admin' identified by 'admin';
+grant all on *.* to 'admin'@'%';
+flush privileges;
+
+===============
+
+docker build -t tomcat9-with-users .
+docker run --name myTomcat -it -p 8080:8080 tomcat9-with-users (rvfedorin/tomcat9-with-users)
+
+===============
+
+docker network create -d bridge --subnet 172.25.0.0/24 mynetwork
+docker network connect mynetwork myTomcat 
+docker network connect mynetwork mysqlServer
+
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' mysqlServer

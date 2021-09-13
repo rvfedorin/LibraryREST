@@ -1,0 +1,210 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="addresses"/>
+            </not>
+        </preConditions>
+        <createTable tableName="addresses">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_addresses"/>
+            </column>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="houseNumber" type="INT"/>
+            <column name="apartmentNumber" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="authors">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_authors"/>
+            </column>
+            <column name="firstName" type="VARCHAR(255)"/>
+            <column name="lastName" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-3">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="genres"/>
+            </not>
+        </preConditions>
+        <createTable tableName="genres">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-4">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="roles"/>
+            </not>
+        </preConditions>
+        <createTable tableName="roles">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-5">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="books"/>
+            </not>
+        </preConditions>
+        <createTable tableName="books">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_books"/>
+            </column>
+            <column name="cost" type="DOUBLE"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="releaseDate" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="genre_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="genre_id" baseTableName="books" constraintName="FK_BOOKS_ON_GENRE"
+                                 referencedColumnNames="id" referencedTableName="genres"/>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-6">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="firstName" type="VARCHAR(255)"/>
+            <column name="lastName" type="VARCHAR(255)"/>
+            <column name="login" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="address_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="users" constraintName="FK_USERS_ON_ADDRESS" referencedColumnNames="id" referencedTableName="addresses"/>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-7">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="book_authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="book_authors">
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_book_authors"/>
+            </column>
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_book_authors"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="book_authors"
+                                 constraintName="fk_booaut_on_author" referencedColumnNames="id"
+                                 referencedTableName="authors"/>
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book_authors"
+                                 constraintName="fk_booaut_on_book" referencedColumnNames="id"
+                                 referencedTableName="books"/>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-8">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="rent_records"/>
+            </not>
+        </preConditions>
+        <createTable tableName="rent_records">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_rent_records"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="book_id" type="BIGINT"/>
+            <column name="takeDate" type="DATETIME"/>
+            <column name="returnDate" type="DATETIME"/>
+            <column name="factReturnDate" type="DATETIME"/>
+            <column name="status" type="VARCHAR(255)"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="rent_records"
+                                 constraintName="FK_RENT_RECORDS_ON_BOOK" referencedColumnNames="id"
+                                 referencedTableName="books"/>
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="rent_records"
+                                 constraintName="FK_RENT_RECORDS_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-9">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users_roles"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users_roles">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_roles"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_roles"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="users_roles"
+                                 constraintName="fk_userol_on_role" referencedColumnNames="id"
+                                 referencedTableName="roles"/>
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_roles"
+                                 constraintName="fk_userol_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+
+
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-10">
+        <createIndex indexName="FKalvt2fq4eb7yj5dc74jeor933" tableName="book_authors">
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-11">
+        <createIndex indexName="FKbvb6dwka4haka61rssm6w4mum" tableName="rent_records">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-12">
+        <createIndex indexName="FKej3jidxlte0r8flpavhiso3g6" tableName="users_roles">
+            <column name="role_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-13">
+        <createIndex indexName="FKip0dsb5jd4w23wvomvvr46j0i" tableName="books">
+            <column name="genre_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-14">
+        <createIndex indexName="FKqpkoyf9l6fs8p1h40d2h388ss" tableName="rent_records">
+            <column name="book_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="roman_fedorin (generated)" id="1629103469606-15">
+        <createIndex indexName="FKqq17xd0vrm40dc3v2r3qf8gpc" tableName="users">
+            <column name="address_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

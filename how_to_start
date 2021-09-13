@@ -1,0 +1,18 @@
+go to ./docker folder: cd docker
+run: docker-compose up -d
+go to classpath folder: cd ..
+run: mvn tomcat7:redeploy
+
+STOP:
+go to ./docker folder: cd docker
+run: docker-compose stop
+
+========================
+
+with postgre:
+go to ./docker/compose_postgresql folder: cd docker/compose_postgresql
+run: docker-compose up -d
+
+you should create a db "library" on localhost:8082 by login:admin pass:admin
+go to classpath folder: cd ..
+run: mvn tomcat7:redeploy

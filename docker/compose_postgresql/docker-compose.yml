@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  db:
+    image: postgres
+    container_name: postgresqlTomcat-compose
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DBNAME: "library"
+      ALLOW_IP_RANGE: "0.0.0.0/0"
+
+  adminer:
+    image: adminer
+    ports:
+      - 8082:8080
+
+  tomcat:
+    image: rvfedorin/tomcat9-with-users
+    container_name: tomcatPostgre-compose
+    ports:
+      - 8080:8080
+    links:
+      - db

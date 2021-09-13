@@ -1,0 +1,217 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="roman_fedorin" id="1629103469606-21">
+        <insert tableName="addresses">
+            <column name="id" valueNumeric="1"/>
+            <column name="apartmentNumber" valueNumeric="11"/>
+            <column name="city" value="Orel"/>
+            <column name="houseNumber" valueNumeric="133"/>
+            <column name="street" value="M.Gorkogo"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="id" valueNumeric="2"/>
+            <column name="apartmentNumber" valueNumeric="21"/>
+            <column name="city" value="Orel"/>
+            <column name="houseNumber" valueNumeric="133"/>
+            <column name="street" value="M.Gorkogo"/>
+        </insert>
+        <insert tableName="addresses">
+            <column name="id" valueNumeric="3"/>
+            <column name="apartmentNumber" valueNumeric="21"/>
+            <column name="city" value="Orel"/>
+            <column name="houseNumber" valueNumeric="133"/>
+            <column name="street" value="Lenina"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1629103469606-22">
+        <insert tableName="authors">
+            <column name="id" valueNumeric="1"/>
+            <column name="firstName" value="William"/>
+            <column name="lastName" value="Shakespeare"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" valueNumeric="2"/>
+            <column name="firstName" value="Fyodor"/>
+            <column name="lastName" value="Dostoevsky"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" valueNumeric="3"/>
+            <column name="firstName" value="Homer"/>
+            <column name="lastName"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" valueNumeric="4"/>
+            <column name="firstName" value="Robert"/>
+            <column name="lastName" value="Jordan"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" valueNumeric="5"/>
+            <column name="firstName" value="Leo"/>
+            <column name="lastName" value="Tolstoy"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1629103469606-23">
+        <insert tableName="genres">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Novel"/>
+        </insert>
+        <insert tableName="genres">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="Crime"/>
+        </insert>
+        <insert tableName="genres">
+            <column name="id" valueNumeric="3"/>
+            <column name="name" value="Tragedy"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1628152849279-24">
+        <insert tableName="books">
+            <column name="id" valueNumeric="1"/>
+            <column name="cost" valueNumeric="550.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="1866-05-01T00:00"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="Crime and Punishment"/>
+            <column name="genre_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" valueNumeric="2"/>
+            <column name="cost" valueNumeric="500.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="1603-01-01T00:000"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="Hamlet"/>
+            <column name="genre_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" valueNumeric="3"/>
+            <column name="cost" valueNumeric="1000.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="1472-01-01T00:00"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="The Divine Comedy"/>
+            <column name="genre_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" valueNumeric="4"/>
+            <column name="cost" valueNumeric="530.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="2021-05-21T00:00"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="The Iliad"/>
+            <column name="genre_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" valueNumeric="5"/>
+            <column name="cost" valueNumeric="600.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="2021-05-18T00:00"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="The Odyssey"/>
+            <column name="genre_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" valueNumeric="6"/>
+            <column name="cost" valueNumeric="1000.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="1990-01-15T00:00"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="The Wheel of Time"/>
+            <column name="genre_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" valueNumeric="7"/>
+            <column name="cost" valueNumeric="300.0"/>
+            <column name="description"/>
+            <column name="releaseDate" value="1867-05-01T00:00"/>
+            <column name="status" value="AVAILABLE"/>
+            <column name="title" value="War and Peace"/>
+            <column name="genre_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1629103469606-25">
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="1"/>
+            <column name="author_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="2"/>
+            <column name="author_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="3"/>
+            <column name="author_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="4"/>
+            <column name="author_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="5"/>
+            <column name="author_id" valueNumeric="3"/>
+        </insert>
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="6"/>
+            <column name="author_id" valueNumeric="4"/>
+        </insert>
+        <insert tableName="book_authors">
+            <column name="book_id" valueNumeric="7"/>
+            <column name="author_id" valueNumeric="5"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1629103469606-26">
+        <insert tableName="users">
+            <column name="id" valueNumeric="1"/>
+            <column name="email"/>
+            <column name="firstName" value="Admin"/>
+            <column name="lastName" value="pass:test"/>
+            <column name="login" value="rf"/>
+            <column name="password" value="$2a$04$CkuamQFggeSEZZ7jQKdn4ujurtCWD/VWBNHUO7Xe15H4DiamW6EZS"/>
+            <column name="address_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="2"/>
+            <column name="email"/>
+            <column name="firstName" value="User"/>
+            <column name="lastName" value="pass:pass"/>
+            <column name="login" value="login"/>
+            <column name="password" value="$2a$04$zYtMfehAeMguqWkKgZ/ZK.1gVJuYrftcemvaDcDZN/v8ZG.ddx6aa"/>
+            <column name="address_id" valueNumeric="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1629103469606-27">
+        <insert tableName="roles">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="roman_fedorin" id="1629103469606-28">
+        <insert tableName="users_roles">
+            <column name="user_id" valueNumeric="1"/>
+            <column name="role_id" valueNumeric="1"/>
+        </insert>
+        <insert tableName="users_roles">
+            <column name="user_id" valueNumeric="1"/>
+            <column name="role_id" valueNumeric="2"/>
+        </insert>
+        <insert tableName="users_roles">
+            <column name="user_id" valueNumeric="2"/>
+            <column name="role_id" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
